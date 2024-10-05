@@ -1,5 +1,5 @@
 from services import Service
-import http.server
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 class SimpleServer(Service):
     '''
@@ -13,7 +13,7 @@ class SimpleServer(Service):
         super().__init__(stop, name="SimpleServer", daemon=False)
 
     def run(self):
-        simple_server = http.server.HTTPServer(('localhost', 8000), http.server.SimpleHTTPRequestHandler)
+        simple_server = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
         simple_server.timeout = 1
         
         print("Start 2")
